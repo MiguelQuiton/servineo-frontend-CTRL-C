@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
@@ -30,7 +31,7 @@ export default function ConfiguracionPage() {
   const { user } = useAuth();
   const router = useRouter();
   //const [menuOpen, setMenuOpen] = useState(false);
-  
+
   const [seccionActiva, setSeccionActiva] = useState('inicio');
 
   // 🆕 Estados para HU5 (Editar Perfil)
@@ -146,7 +147,7 @@ export default function ConfiguracionPage() {
               Cambiar Contraseña
             </h2>
             <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
-              <ChangePasswordForm 
+              <ChangePasswordForm
                 onCancel={handlePasswordCancel}
                 onSaved={handlePasswordSaved}
               />
@@ -169,12 +170,12 @@ export default function ConfiguracionPage() {
                 className="flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out bg-white text-gray-800 cursor-pointer min-w-[220px]"
               >
                 <div className="p-2 rounded-md bg-blue-50">
-                  <Image 
-                  src="/icons/edit-pass.png" 
-                  alt="Cambiar contraseña" 
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 object-contain text-blue-600" />
+                  <Image
+                    src="/icons/edit-pass.png"
+                    alt="Cambiar contraseña"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-contain text-blue-600" />
                 </div>
                 <span className="font-medium">Cambiar contraseña</span>
               </button>
@@ -185,32 +186,32 @@ export default function ConfiguracionPage() {
                 className="flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out bg-white text-gray-800 cursor-pointer min-w-[220px]"
               >
                 <div className="p-2 rounded-md bg-blue-50">
-                  <Image 
-                  src="/icons/logins.png" 
-                  alt="Dispositivos vinculados" 
-                  width={24}
-                  height={24}
-                  className="w-6 h-6 object-contain text-blue-600" />
+                  <Image
+                    src="/icons/logins.png"
+                    alt="Dispositivos vinculados"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6 object-contain text-blue-600" />
                 </div>
                 <span className="font-medium">Dispositivos vinculados</span>
               </button>
 
               {/* 🆕 Authenticator (nuevo botón) */}
-        <button
-          onClick={() =>  router.push('/requesterEdit/Seguridad/Authenticator/')}
-          className="flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out bg-white text-gray-800 cursor-pointer min-w-[220px]"
-        >
-          <div className="p-2 rounded-md bg-blue-50">
-            <Image 
-              src="/icons/appauth.png" 
-              alt="Authenticator" 
-              width={24}
-              height={24}
-              className="w-6 h-6 object-contain text-blue-600" 
-            />
-          </div>
-          <span className="font-medium">Authenticator</span>
-        </button>
+              <button
+                onClick={() => router.push('/requesterEdit/Seguridad/Authenticator/')}
+                className="flex items-center gap-3 px-6 py-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out bg-white text-gray-800 cursor-pointer min-w-[220px]"
+              >
+                <div className="p-2 rounded-md bg-blue-50">
+                  <Image
+                    src="/icons/appauth.png"
+                    alt="Authenticator"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6 object-contain text-blue-600"
+                  />
+                </div>
+                <span className="font-medium">Authenticator</span>
+              </button>
 
             </div>
           </div>
@@ -226,12 +227,12 @@ export default function ConfiguracionPage() {
               <>
                 <div className="mb-4">
                   {safeUser.url_photo ? (
-                    <Image 
-                    src={safeUser.url_photo} 
-                    alt="Foto de perfil" 
-                    width={112} 
-                    height={112} 
-                    className="w-28 h-28 rounded-full border-4 border-blue-100 object-cover mb-4 shadow-sm"/>
+                    <Image
+                      src={safeUser.url_photo}
+                      alt="Foto de perfil"
+                      width={112}
+                      height={112}
+                      className="w-28 h-28 rounded-full border-4 border-blue-100 object-cover mb-4 shadow-sm" />
                   ) : (
                     <div className="w-28 h-28 rounded-full bg-blue-100 flex items-center justify-center text-2xl font-semibold text-blue-700 mb-4 shadow-sm border-4 border-blue-200">
                       {getInitials(safeUser.name ?? safeUser.email ?? '')}
@@ -256,7 +257,7 @@ export default function ConfiguracionPage() {
   return (
     <div className="font-sans flex flex-col min-h-screen bg-gray-50 text-gray-800">
       {/* Header - igual */}
-      
+
       <div className="flex flex-1">
         {/* Sidebar actualizado */}
         <aside className="w-64 bg-white p-6 flex flex-col justify-between relative shadow-md">
@@ -274,54 +275,51 @@ export default function ConfiguracionPage() {
               {/* Editar Perfil - Ahora interno */}
               <button
                 onClick={() => setSeccionActiva('perfil')}
-                className={`cursor-pointer flex items-center gap-2 w-full px-3 py-2 rounded-lg text-left transition-all duration-300 ease-out ${
-                  seccionActiva === 'perfil'
+                className={`cursor-pointer flex items-center gap-2 w-full px-3 py-2 rounded-lg text-left transition-all duration-300 ease-out ${seccionActiva === 'perfil'
                     ? 'bg-blue-100 text-blue-600 font-semibold'
                     : 'hover:bg-blue-50 hover:text-blue-600 hover:font-semibold'
-                }`}
+                  }`}
               >
-                <Image 
-                src="/icons/edit-config.png" 
-                alt="Editar Perfil" 
-                width={24}
-                height={24}
-                className="w-6 h-6" />
+                <Image
+                  src="/icons/edit-config.png"
+                  alt="Editar Perfil"
+                  width={24}
+                  height={24}
+                  className="w-6 h-6" />
                 Editar Perfil
               </button>
 
               {/* Seguridad - Estado interno */}
               <button
                 onClick={() => setSeccionActiva('seguridad')}
-                className={`cursor-pointer flex items-center gap-2 w-full px-3 py-2 rounded-lg text-left transition-all duration-300 ease-out ${
-                  seccionActiva === 'seguridad' || seccionActiva === 'password'
+                className={`cursor-pointer flex items-center gap-2 w-full px-3 py-2 rounded-lg text-left transition-all duration-300 ease-out ${seccionActiva === 'seguridad' || seccionActiva === 'password'
                     ? 'bg-blue-100 text-blue-600 font-semibold'
                     : 'hover:bg-blue-50 hover:text-blue-600 hover:font-semibold'
-                }`}
+                  }`}
               >
-                <Image 
-                src="/icons/seguridad-config.png" 
-                alt="Seguridad" 
-                width={28}
-                height={28}
-                className="w-7 h-7" />
+                <Image
+                  src="/icons/seguridad-config.png"
+                  alt="Seguridad"
+                  width={28}
+                  height={28}
+                  className="w-7 h-7" />
                 Seguridad
               </button>
 
               {/* Cuentas vinculadas - Estado interno */}
               <button
                 onClick={() => setSeccionActiva('cuentas')}
-                className={`cursor-pointer flex items-center gap-2 w-full px-3 py-2 rounded-lg text-left transition-all duration-300 ease-out ${
-                  seccionActiva === 'cuentas'
+                className={`cursor-pointer flex items-center gap-2 w-full px-3 py-2 rounded-lg text-left transition-all duration-300 ease-out ${seccionActiva === 'cuentas'
                     ? 'bg-blue-100 text-blue-600 font-semibold'
                     : 'hover:bg-blue-50 hover:text-blue-600 hover:font-semibold'
-                }`}
+                  }`}
               >
-                <Image 
-                src="/icons/cuentas.png" 
-                alt="Cuentas" 
-                width={28}
-                height={28}
-                className="w-7 h-7" />
+                <Image
+                  src="/icons/cuentas.png"
+                  alt="Cuentas"
+                  width={28}
+                  height={28}
+                  className="w-7 h-7" />
                 Cuentas vinculadas
               </button>
             </nav>
